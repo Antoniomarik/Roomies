@@ -23,7 +23,7 @@ public class UserService {
     UserRepository userRepository;
 
     private final ModelMapper modelMapper;
-    //private final PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
     public User dtoToEntity(UserDTO userDTO){
         return modelMapper.map(userDTO,User.class);
@@ -32,7 +32,7 @@ public class UserService {
     public UserDTO entityToDto(User user){return modelMapper.map(user,UserDTO.class);}
 
     public void saveUser(UserDTO userDTO){
-        //userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+        userDTO.setPassword(passwordEncoder.encode(userDTO.getPassword()));
         User user = dtoToEntity(userDTO);
 
         userRepository.save(user);

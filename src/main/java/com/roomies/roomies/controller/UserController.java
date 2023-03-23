@@ -16,15 +16,4 @@ import java.util.List;
 @Data
 public class UserController {
 
-    @Autowired
-    UserService userService;
-
-    @GetMapping("/show")
-    public String test(Model model){
-        List<UserDTO> userDTOList = userService.getAllUsers();
-
-        model.addAttribute("userList",userDTOList);
-
-        return "dusers";
-    }
 }
